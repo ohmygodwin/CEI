@@ -3,6 +3,7 @@ x8, y8, x9, y9, x10, y10, m, n, m1, n1, m2, n2, m3, n3, m4, n4, m5,
 n5, m6, n6, m7, n7, c, d, c1, d1, c2, d2, c3, d3, c4, d4, c5, d5, 
 q, r;
 float a;
+boolean saveMe = false;
 
 void setup() {
   size(430, 430);
@@ -10,7 +11,10 @@ void setup() {
 }
 
 void draw() {
-  
+  if (keyPressed && key == 's') {
+    saveFrame("frame-######.png");
+    saveMe = false;
+  }
   
   if (millis() < 30000) {
     a+=.002;
@@ -41,11 +45,12 @@ void draw() {
     popMatrix();
   }
     
-    else if (millis() >= 30000 && millis() <= 30300) {
-      background(50, 50, 50, 1);
+    else if (millis() >= 30000 && millis() <= 31000) {
+      fill(50, 50, 50, 50);
+      rect(0, 0, width, height);
     }
     
-    else if (millis() > 30300 && millis() < 41000) {
+    else if (millis() > 31300 && millis() < 41000) {
       a+=.02;
       pushMatrix();
       translate(width/2, height/2);
@@ -89,12 +94,13 @@ void draw() {
       popMatrix();
     }
     
-    else if (millis() >= 41000 && millis() <= 41300) {
-      background(50, 50, 50, 0.01);
+    else if (millis() >= 41300 && millis() <= 42000) {
+      fill(50, 50, 50, 50);
+      rect(0, 0, width, height);
     }
     
-    else if (millis() > 41300 && millis() < 75000) {
-      a+=.005;
+    else if (millis() > 42000 && millis() < 75000) {
+      a+=.004;
       pushMatrix();
       translate(width/2, height/2);
       m = sin(a*200)*200;
@@ -126,18 +132,6 @@ void draw() {
       ellipse(m7, n7, 7, 7);
       popMatrix();
     }
-    
-  /*
-  
-  
-  pushMatrix();
-  translate(3*width/4 , 3*height/4);
-  q = cos(a*200)*200;
-  r = cos(a*1)*200;
-  fill(204, 183, 202, 100);
-  ellipse(q, r, 7, 7);
-  popMatrix();
-  */
   
   println(millis());
   println(a);

@@ -1,5 +1,7 @@
 float x, y, m, n, c, d, q, r;
 float a;
+boolean saveMe = false;
+
 
 void setup() {
   size(430*2, 430*2);
@@ -7,6 +9,10 @@ void setup() {
 }
 
 void draw() {
+  if (keyPressed && key == 's') {
+    saveFrame("frame-######.png");
+    saveMe = false;
+  }
   a+=.02;
   
   pushMatrix();
