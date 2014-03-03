@@ -3,11 +3,11 @@ float a;
 
 void setup() {
   size(430*2, 430*2);
-  background(255);
+  background(50);
 }
 
 void draw() {
-  a+=.02;
+  a+=.001;
   
   pushMatrix();
   translate(width/4, height/4);
@@ -15,7 +15,7 @@ void draw() {
   y = sin(a*1)*200;
   noStroke();
   //stroke(232, 205, 27);
-  fill(232, 205, 27, 100);
+  fill(196, 205, 202, 100);
   //line(x, y, x+5, y+5);
   ellipse(x, y, 7, 7);
   popMatrix();
@@ -25,7 +25,7 @@ void draw() {
   c = cos(a*100)*200;
   d = sin(a*1)*200;
   noStroke();
-  fill(130, 124, 59, 100);
+  fill(223, 190, 180, 100);
   ellipse(c, d, 7, 7);
   popMatrix();
   
@@ -34,7 +34,7 @@ void draw() {
   m = sin(a*200)*200;
   n = cos(a*1)*200;
   noStroke();
-  fill(138, 109, 109, 100);
+  fill(204, 198, 187, 100);
   ellipse(m, n, 7, 7);
   popMatrix();
   
@@ -42,7 +42,7 @@ void draw() {
   translate(3*width/4 , 3*height/4);
   q = cos(a*200)*200;
   r = cos(a*1)*200;
-  fill(209, 98, 43, 100);
+  fill(204, 183, 202, 100);
   ellipse(q, r, 7, 7);
   popMatrix();
   
