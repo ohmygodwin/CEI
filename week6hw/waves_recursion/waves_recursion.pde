@@ -22,7 +22,7 @@ void draw() {
     saveMe = false;
   }
   
-  if (millis() < 25000) {
+  if (millis() < 20000) {
     red -= .1;
     green += .06;
     blue += .1;
@@ -82,7 +82,7 @@ void draw() {
  
     
     
-    else if (millis() < 37000) {
+    else if (millis() < 30000) {
       red -= .08;
       green -= .08;
       blue += .15;
@@ -145,10 +145,10 @@ void draw() {
     }
     
    
-    else if (millis() < 70000) {
+    else if (millis() < 60000) {
       red += .01;
-      green +=.07;
-      blue -=.07;
+      green +=.06;
+      blue -=.06;
       a+=.004;
       pushMatrix();
       translate(width/2, height/2);
