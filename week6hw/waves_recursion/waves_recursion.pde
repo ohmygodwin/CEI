@@ -1,10 +1,10 @@
 float x, y, x1, y1, x2, y2, x3, y3, x4, y4, x5, y5, x6, y6, x12, y12,
 x8, y8, x9, y9, x10, y10, m, n, m1, n1, m2, n2, m3, n3, m4, n4, m5,
-n5, m6, n6, m12, n12, c, d, c1, d1, c2, d2, c3, d3, c4, d4, c5, d5, 
+n5, m6, n6, m12, n12, c, d, c1, d1, c2, d2, c3, d3, c4, d4, c5, d5, c6, d6, c7, d7, c8, d8, c9, d9,
 q, r;
 float a;
 boolean saveMe = false;
-float red = 40;
+float red = 240;
 float green = 40;
 float blue = 40;
 float theta;
@@ -22,10 +22,10 @@ void draw() {
     saveMe = false;
   }
   
-  if (millis() < 15000) {
-    red += .03;
-    green += .1;
-    blue += .2;
+  if (millis() < 25000) {
+    red -= .1;
+    green += .06;
+    blue += .1;
     a+=.002;
     pushMatrix();
     translate(width/2, height/2);
@@ -41,35 +41,51 @@ void draw() {
     d4 = sin((a+120)*1)*freq;
     c5 = cos((a+150)*100)*freq;
     d5 = sin((a+150)*1)*freq;
+    c6 = cos((a+180)*100)*freq;
+    d6 = sin((a+180)*1)*freq;
+    c7 = cos((a+210)*100)*freq;
+    d7 = sin((a+210)*1)*freq;
+    c8 = cos((a+240)*100)*freq;
+    d8 = sin((a+240)*1)*freq;
+    c9 = cos((a+270)*100)*freq;
+    d9 = sin((a+270)*1)*freq;
     
     noStroke();
     fill(red, green, blue, 100);
     //fill(216, 162, 165, 50);
     //fill(223, 190, 180, 100);
     //fill(2412, 103, 81, 50);
-    //ellipse(c, d, 10, 10);
-    //recur(10.0, c, d);
+    ellipse(c, d, 10, 10);
+    recur(10.0, c, d);
     
     ellipse(c1, d1, 8, 8);
-    recur(8.0, c1, d1);
+    recur(12.0, c1, d1);
     ellipse(c2, d2, 10, 10);
-    recur(10.0, c2, d2);
+    recur(12.0, c2, d2);
     ellipse(c3, d3, 10, 10);
-    recur(10.0, c3, d3);
+    recur(12.0, c3, d3);
     ellipse(c4, d4, 10, 10);
-    recur(10.0, c4, d4);
+    recur(12.0, c4, d4);
     ellipse(c5, d5, 10, 10);
-    recur(10.0, c5, d5);
+    recur(12.0, c5, d5);
+    ellipse(c6, d6, 10, 10);
+    recur(12.0, c6, d6);
+    ellipse(c7, d7, 10, 10);
+    recur(12.0, c7, d7);
+    ellipse(c8, d8, 10, 10);
+    recur(12.0, c8, d8);
+    ellipse(c9, d9, 10, 10);
+    recur(12.0, c9, d9);
     
     popMatrix();
   }
  
     
     
-    else if (millis() < 25000) {
-      red += .4;
-      green -= .03;
-      blue += .2;
+    else if (millis() < 37000) {
+      red -= .08;
+      green -= .08;
+      blue += .15;
       a+=.02;
       pushMatrix();
       translate(width/2, height/2);
@@ -129,10 +145,10 @@ void draw() {
     }
     
    
-    else if (millis() < 50000) {
-      red -= .3;
-      green +=.2
-      blue -=.1;
+    else if (millis() < 70000) {
+      red += .01;
+      green +=.07;
+      blue -=.07;
       a+=.004;
       pushMatrix();
       translate(width/2, height/2);
@@ -179,7 +195,7 @@ void draw() {
     }
   
   println(millis());
-  println(red);
+  println(red + ", " + green + ", " + blue);
 }
 
 void recur(float size, float xLoc, float yLoc) {
