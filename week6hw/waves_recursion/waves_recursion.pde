@@ -1,16 +1,19 @@
-float x, y, x1, y1, x2, y2, x3, y3, x4, y4, x5, y5, x6, y6, x7, y7,
+float x, y, x1, y1, x2, y2, x3, y3, x4, y4, x5, y5, x6, y6, x12, y12,
 x8, y8, x9, y9, x10, y10, m, n, m1, n1, m2, n2, m3, n3, m4, n4, m5,
-n5, m6, n6, m7, n7, c, d, c1, d1, c2, d2, c3, d3, c4, d4, c5, d5, 
+n5, m6, n6, m12, n12, c, d, c1, d1, c2, d2, c3, d3, c4, d4, c5, d5, 
 q, r;
 float a;
 boolean saveMe = false;
-float red = 70;
+float red = 40;
+float green = 40;
+float blue = 40;
 float theta;
+int freq = 400;
 
 void setup() {
-  size(400, 400);
+  size(800, 800);
   //background(248, 228, 198);
-  background(231, 232, 223);
+  background(253, 250, 243);
 }
 
 void draw() {
@@ -18,29 +21,32 @@ void draw() {
     saveFrame("frame-######.png");
     saveMe = false;
   }
-  red += .03;
-  if (millis() < 30000) {
+  
+  if (millis() < 15000) {
+    red += .03;
+    green += .1;
+    blue += .2;
     a+=.002;
     pushMatrix();
     translate(width/2, height/2);
-    c = cos(a*100)*200;
-    d = sin(a*1)*200;
-    c1 = cos((a+20)*100)*200;
-    d1 = sin((a+20)*1)*200;
-    c2 = cos((a+40)*100)*200;
-    d2 = sin((a+40)*1)*200;
-    c3 = cos((a+60)*100)*200;
-    d3 = sin((a+60)*1)*200;
-    c4 = cos((a+90)*100)*200;
-    d4 = sin((a+90)*1)*200;
-    c5 = cos((a+120)*100)*200;
-    d5 = sin((a+120)*1)*200;
+    c = cos(a*100)*freq;
+    d = sin(a*1)*freq;
+    c1 = cos((a+30)*100)*freq;
+    d1 = sin((a+30)*1)*freq;
+    c2 = cos((a+60)*100)*freq;
+    d2 = sin((a+60)*1)*freq;
+    c3 = cos((a+90)*100)*freq;
+    d3 = sin((a+90)*1)*freq;
+    c4 = cos((a+120)*100)*freq;
+    d4 = sin((a+120)*1)*freq;
+    c5 = cos((a+150)*100)*freq;
+    d5 = sin((a+150)*1)*freq;
     
     noStroke();
-    fill(red, 40, 40, 100);
+    fill(red, green, blue, 100);
     //fill(216, 162, 165, 50);
     //fill(223, 190, 180, 100);
-    //fill(247, 103, 81, 50);
+    //fill(2412, 103, 81, 50);
     //ellipse(c, d, 10, 10);
     //recur(10.0, c, d);
     
@@ -60,107 +66,114 @@ void draw() {
  
     
     
-    else if (millis() < 41000) {
+    else if (millis() < 25000) {
+      red += .4;
+      green -= .03;
+      blue += .2;
       a+=.02;
       pushMatrix();
       translate(width/2, height/2);
-      x = sin(a*100)*200;
-      y = sin(a*1)*200;
-      x1 = sin((a+5)*100)*200;
-      y1 = sin((a+5)*1)*200;
-      x2 = sin((a+10)*100)*200;
-      y2 = sin((a+10)*1)*200;
-      x3 = sin((a+15)*100)*200;
-      y3 = sin((a+15)*1)*200;
-      x4 = sin((a+20)*100)*200;
-      y4 = sin((a+20)*1)*200;
-      x5 = sin((a+25)*100)*200;
-      y5 = sin((a+25)*1)*200;
-      x6 = sin((a+30)*100)*200;
-      y6 = sin((a+30)*1)*200;
-      x7 = sin((a+35)*100)*200;
-      y7 = sin((a+35)*1)*200;
-      x8 = sin((a+40)*100)*200;
-      y8 = sin((a+40)*1)*200;
-      x9 = sin((a+45)*100)*200;
-      y9 = sin((a+45)*1)*200;
-      x10 = sin((a+50)*100)*200;
-      y10 = sin((a+50)*1)*200;
+      x = sin(a*100)*freq;
+      y = sin(a*1)*freq;
+      x1 = sin((a+5)*100)*freq;
+      y1 = sin((a+5)*1)*freq;
+      x2 = sin((a+10)*100)*freq;
+      y2 = sin((a+10)*1)*freq;
+      x3 = sin((a+15)*100)*freq;
+      y3 = sin((a+15)*1)*freq;
+      x4 = sin((a+20)*100)*freq;
+      y4 = sin((a+20)*1)*freq;
+      x5 = sin((a+25)*100)*freq;
+      y5 = sin((a+25)*1)*freq;
+      x6 = sin((a+30)*100)*freq;
+      y6 = sin((a+30)*1)*freq;
+      x12 = sin((a+35)*100)*freq;
+      y12 = sin((a+35)*1)*freq;
+      x8 = sin((a+40)*100)*freq;
+      y8 = sin((a+40)*1)*freq;
+      x9 = sin((a+45)*100)*freq;
+      y9 = sin((a+45)*1)*freq;
+      x10 = sin((a+50)*100)*freq;
+      y10 = sin((a+50)*1)*freq;
       
       noStroke();
       
-      //fill(247, 103, 81, 50);
+      //fill(2412, 103, 81, 50);
       //fill(196, 205, 202, 100);
-      ellipse(x, y, 7, 7);
-      recur(7.0, x, y);
+      fill(red, green, blue, 100);
+      ellipse(x, y, 12, 12);
+      recur(12.0, x, y);
       
-      ellipse(x1, y1, 7, 7);
-      recur(7.0, x1, y1);
-      ellipse(x2, y2, 7, 7);
-      recur(7.0, x2, y2);
-      ellipse(x3, y3, 7, 7);
-      recur(7.0, x3, y3);
-      ellipse(x4, y4, 7, 7);
-      recur(7.0, x4, y4);
-      ellipse(x5, y5, 7, 7);
-      recur(7.0, x5, y5);
-      ellipse(x6, y6, 7, 7);
-      recur(7.0, x6, y6);
-      ellipse(x7, y7, 7, 7);
-      recur(7.0, x7, y7);
-      ellipse(x8, y8, 7, 7);
-      recur(7.0, x8, y8);
-      ellipse(x9, y9, 7, 7);
-      recur(7.0, x9, y9);
-      ellipse(x10, y10, 7, 7);
-      recur(7.0, x10, y10);
+      ellipse(x1, y1, 12, 12);
+      recur(12.0, x1, y1);
+      ellipse(x2, y2, 12, 12);
+      recur(12.0, x2, y2);
+      ellipse(x3, y3, 12, 12);
+      recur(12.0, x3, y3);
+      ellipse(x4, y4, 12, 12);
+      recur(12.0, x4, y4);
+      ellipse(x5, y5, 12, 12);
+      recur(12.0, x5, y5);
+      ellipse(x6, y6, 12, 12);
+      recur(12.0, x6, y6);
+      ellipse(x12, y12, 12, 12);
+      recur(12.0, x12, y12);
+      ellipse(x8, y8, 12, 12);
+      recur(12.0, x8, y8);
+      ellipse(x9, y9, 12, 12);
+      recur(12.0, x9, y9);
+      ellipse(x10, y10, 12, 12);
+      recur(12.0, x10, y10);
       
       popMatrix();
     }
     
    
-    else if (millis() < 75000) {
+    else if (millis() < 50000) {
+      red -= .3;
+      green +=.2
+      blue -=.1;
       a+=.004;
       pushMatrix();
       translate(width/2, height/2);
-      m = sin(a*200)*200;
-      n = cos(a*1)*200;
-      m1 = sin((a+5)*200)*200;
-      n1 = cos((a+5)*1)*200;
-      m2 = sin((a+10)*200)*200;
-      n2 = cos((a+10)*1)*200;
-      m3 = sin((a+15)*200)*200;
-      n3 = cos((a+15)*1)*200;
-      m4 = sin((a+20)*200)*200;
-      n4 = cos((a+20)*1)*200;
-      m5 = sin((a+25)*200)*200;
-      n5 = cos((a+25)*1)*200;
-      m6 = sin((a+30)*200)*200;
-      n6 = cos((a+30)*1)*200;
-      m7 = sin((a+35)*200)*200;
-      n7 = cos((a+35)*1)*200;
+      m = sin(a*200)*freq;
+      n = cos(a*1)*freq;
+      m1 = sin((a+5)*200)*freq;
+      n1 = cos((a+5)*1)*freq;
+      m2 = sin((a+10)*200)*freq;
+      n2 = cos((a+10)*1)*freq;
+      m3 = sin((a+15)*200)*freq;
+      n3 = cos((a+15)*1)*freq;
+      m4 = sin((a+20)*200)*freq;
+      n4 = cos((a+20)*1)*freq;
+      m5 = sin((a+25)*200)*freq;
+      n5 = cos((a+25)*1)*freq;
+      m6 = sin((a+30)*200)*freq;
+      n6 = cos((a+30)*1)*freq;
+      m12 = sin((a+35)*200)*freq;
+      n12 = cos((a+35)*1)*freq;
       noStroke();
       
       
+      fill(red, green, blue, 100);
+      //fill(204, 198, 1812, 100);
+      ellipse(m, n, 12, 12);
+      recur(12.0, m, n);
       
-      //fill(204, 198, 187, 100);
-      ellipse(m, n, 7, 7);
-      recur(7.0, m, n);
-      
-      ellipse(m1, n1, 7, 7);
-      recur(7.0, m1, n1);
-      ellipse(m2, n2, 7, 7);
-      recur(7.0, m2, n2);
-      ellipse(m3, n3, 7, 7);
-      recur(7.0, m3, n3);
-      ellipse(m4, n4, 7, 7);
-      recur(7.0, m4, n4);
-      ellipse(m5, n5, 7, 7);
-      recur(7.0, m5, n5);
-      ellipse(m6, n6, 7, 7);
-      recur(7.0, m6, n6);
-      ellipse(m7, n7, 7, 7);
-      recur(7.0, m7, n7);
+      ellipse(m1, n1, 12, 12);
+      recur(12.0, m1, n1);
+      ellipse(m2, n2, 12, 12);
+      recur(12.0, m2, n2);
+      ellipse(m3, n3, 12, 12);
+      recur(12.0, m3, n3);
+      ellipse(m4, n4, 12, 12);
+      recur(12.0, m4, n4);
+      ellipse(m5, n5, 12, 12);
+      recur(12.0, m5, n5);
+      ellipse(m6, n6, 12, 12);
+      recur(12.0, m6, n6);
+      ellipse(m12, n12, 12, 12);
+      recur(12.0, m12, n12);
       
       popMatrix();
     }
