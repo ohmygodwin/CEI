@@ -2,6 +2,8 @@
 import arb.soundcipher.*;
 SoundCipher midi;
 
+boolean saveMe = false;
+
 int [] pitches = { 
   96, 84, 72, 64, 48, 42, 70, 56, 88, 102, 52
 };
@@ -43,6 +45,11 @@ void setup() {
 }
 
 void draw() {
+  if (keyPressed && key == 's') {
+    saveFrame("frame-######.png");
+    saveMe = false;
+  }
+  
   // Wrap the visualization
   x++;
   if (x > width*(tx+1)) {
