@@ -46,22 +46,15 @@ class Voice {
   }
 
   boolean run() {
-    age++;   // Keep track of how long the voice has been going for
-    // Play the beat
-    if ( age%beat < 1) {
+    
       beat = constrain(wave.run(), 10, wave.run());
       float[] pitches = {60, 64, 66, 67, 62, 71, 69, 61, 65, 63, 68, 70};
       for (int i = 0; i < 12; i++) {
-      midi.playNote(pitches[i], 100, 1.25); 
+      midi.playNote(pitches[i], random(50, 100), random(.25, 1)); 
       }
-      return true;
-    }
+      
     return false;
   }
   
-  // Check for dead
-  boolean isDead() {
-    return age > lifespan;
-  }
 }
 
