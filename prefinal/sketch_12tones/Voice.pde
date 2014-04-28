@@ -46,12 +46,25 @@ class Voice {
   }
 
   boolean run() {
-    
+    age++;   // Keep track of how long the voice has been going for
+    // Play the beat
+    if ( age%beat < 1) {
       beat = constrain(wave.run(), 10, wave.run());
+//      float[] pitches = {60, 64, 66, 67, 62, 71, 69, 61, 65, 63, 68, 70};
+//      for (int i = 0; i < 12; i++) {
+//      midi.playNote(pitches[i], random(50, 100), random(.25, 1)); 
+//      }
+
       float[] pitches = {60, 64, 66, 67, 62, 71, 69, 61, 65, 63, 68, 70};
-      for (int i = 0; i < 12; i++) {
-      midi.playNote(pitches[i], random(50, 100), random(.25, 1)); 
-      }
+      float [] dynamics = {80, 100, 80, 80, 80, 100, 80, 80, 100, 80, 80, 100};
+      float[] durations = {random(.15, 1.5), random(.15, 1.5), random(.15, 1.5),random(.15, 1.5), 
+      random(.15, 1.5), random(.15, 1.5), random(.15, 1.5), random(.15, 1.5), random(.15, 1.5),
+      random(.15, 1.5), random(.15, 1.5), random(.15, 1.5)};
+        
+      midi.playPhrase(pitches, dynamics, durations);
+
+      return true;
+    }
       
     return false;
   }

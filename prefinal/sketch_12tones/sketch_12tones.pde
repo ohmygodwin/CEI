@@ -41,13 +41,14 @@ float[] pitches4 = {63, 68, 70};
 //midi.playChord(13, 0, 64, pitches4, 80, 4, .8, 64);
 
 //midi.playChord(pitches, 80, 1);
-frameRate(.5);
+//frameRate(.5);
+go();
 
 }
 
 void draw() {
   
-  go();
+  //go();
   
   //midi.playNote(midi.pcRandom(60, 72, midi.CHROMATIC), 100, 1);
 
