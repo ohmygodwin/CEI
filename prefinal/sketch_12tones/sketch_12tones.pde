@@ -1,6 +1,10 @@
 import arb.soundcipher.*;
 
 SoundCipher midi;
+Voice[] voices = new Voice[2];
+Wave wave;
+  float beat = 1;
+
 
 //float[] pitches = {60, 64, 66, 67, 62, 71, 69, 61, 65, 63, 68, 70};
 //float [] dynamics = {80, 100, 80, 80, 80, 100, 80, 80, 100, 80, 80, 100};
@@ -14,31 +18,43 @@ SoundCipher midi;
 void setup() {
   midi = new SoundCipher(this);
   midi.instrument = midi.OCARINA;
-}
-
-void draw() {
+  
   wave = new Sine(); 
 
   
-  float freq = random(0.01, 0.1);
-    float amp = random(100, 1000);
+  float freq = .1;
+    float amp = 200;
     wave.init(0, freq, amp, amp);
 
 float[] pitches = {60, 64, 66};
 float[] pitches2 = {67, 62, 71};
 float[] pitches3 = {69, 61, 65};
 float[] pitches4 = {63, 68, 70};
+
+//cos(t)*a + o
+//abs(tan(t)*a)
+
+//beat = constrain(wave.run(), 10, wave.run());  
+//midi.playChord(1, 0, 64, pitches, 80, 4, .8, 64);
+//midi.playChord(5, 0, 64, pitches2, 80, 4, .8, 64);
+//midi.playChord(9, 0, 64, pitches3, 80, 4, .8, 64);
+//midi.playChord(13, 0, 64, pitches4, 80, 4, .8, 64);
+
+//midi.playChord(pitches, 80, 1);
+}
+
+void draw() {
   
-score.addChord(1, pitches, 80, 4);
-score.addChord(5, pitches2, 80, 4);
-score.addChord(9, pitches3, 80, 4);
-score.addChord(13, pitches4, 80, 4);
-//
-//sc.CHROMATIC
+  go();
 
-score.addNote(0, 9, 0, 36, 100, 0.5, 0.8, 64);
+}
 
-score.play(3);
+Voice[] go() {
+  voices[0] = new Voice();
+  voices[0].run();
+  
+  return voices;
+
 }
 
 
