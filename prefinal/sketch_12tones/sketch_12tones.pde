@@ -19,17 +19,11 @@ void setup() {
   midi = new SoundCipher(this);
   midi.instrument = midi.OCARINA;
   
-  wave = new Sine(); 
-
   
-  float freq = .1;
-    float amp = 200;
-    wave.init(0, freq, amp, amp);
-
-float[] pitches = {60, 64, 66};
-float[] pitches2 = {67, 62, 71};
-float[] pitches3 = {69, 61, 65};
-float[] pitches4 = {63, 68, 70};
+  float[] pitches = {60, 64, 66};
+  float[] pitches2 = {67, 62, 71};
+  float[] pitches3 = {69, 61, 65};
+  float[] pitches4 = {63, 68, 70};
 
 //cos(t)*a + o
 //abs(tan(t)*a)
@@ -42,13 +36,13 @@ float[] pitches4 = {63, 68, 70};
 
 //midi.playChord(pitches, 80, 1);
 //frameRate(.5);
-go();
+//go();
 
 }
 
 void draw() {
   
-  //go();
+  go();
   
   //midi.playNote(midi.pcRandom(60, 72, midi.CHROMATIC), 100, 1);
 
