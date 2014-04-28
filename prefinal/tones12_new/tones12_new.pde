@@ -2,6 +2,7 @@ import arb.soundcipher.*;
  
 SoundCipher midi = new SoundCipher(this);
 int beat;
+int x = 10;
 
 //float[] pitches = {60, 64, 66, 67, 62, 71, 69, 61, 65, 63, 68, 70};
 float[][] pitches = {
@@ -23,20 +24,33 @@ int set;
 
 void setup() {
       //frameRate(2);
-      size(200, 200);
+      size(800, 200);
       background(50);
       beat = 0;
 }
  
 void draw() {
-      float slow = map(mouseX, 0, width, 5, 40);
+      float slow = map(mouseX, 0, width, 5, 50);
       frameRate(random(.25, slow));
       
       if (beat == 0) {
         set = floor(random(0, 11.9));
       }
       
-      midi.playNote(pitches[set][beat], random(30, 100), random(.25, 4)); 
+      float dynamics = random(30, 100);
+      float tempo = random(.25, 4);
+      
+      midi.playNote(pitches[set][beat], dynamics, tempo); 
+      
+      noStroke();
+      fill(255, 150);
+      ellipse(x, map(pitches[set][beat], 59, 72, 0, height), tempo*10, tempo*10);
+      x+=(50-frameRate)/10;
+      if (x > width-10) {
+        background(50);
+        x = 5;
+      }
+      
       println(pitches[set][beat], set, beat);
       
       beat = (beat + 1) % pitches.length; // mod so it goes back to 0 after passing 11
