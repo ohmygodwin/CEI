@@ -5,6 +5,9 @@ int beat;
 int x = 10;
 
 //float[] pitches = {60, 64, 66, 67, 62, 71, 69, 61, 65, 63, 68, 70};
+
+float[] tone = new float[12];
+
 float[][] pitches = {
   {60, 64, 66, 67, 62, 71, 69, 61, 65, 63, 68, 70},
   {68, 60, 62, 63, 70, 67, 65, 69, 61, 71, 64, 66},
@@ -27,6 +30,10 @@ void setup() {
       size(800, 200);
       background(50);
       beat = 0;
+      
+      println(tone);
+      fishy();
+      println(tone);
 }
  
 void draw() {
@@ -40,7 +47,7 @@ void draw() {
       float dynamics = random(30, 100);
       float tempo = random(.25, 4);
       
-      midi.playNote(pitches[set][beat], dynamics, tempo); 
+      //midi.playNote(pitches[set][beat], dynamics, tempo); 
       
       noStroke();
       fill(255, 150);
@@ -51,31 +58,37 @@ void draw() {
         x = 5;
       }
       
-      println(pitches[set][beat], set, beat);
+      //println(pitches[set][beat], set, beat);
       
       beat = (beat + 1) % pitches.length; // mod so it goes back to 0 after passing 11
       //println(beat);
 }
 
-//float[] newPitches() {
-//
-//  
-//  switch(floor(random(0, 4))) {
-//    case 0:
-//      pitches = {60, 64, 66, 67, 62, 71, 69, 61, 65, 63, 68, 70}; 
-//      break;
-//    case 1:
-//      pitches = {68, 60, 62, 63, 70, 67, 65, 69, 61, 71, 64, 66}; 
-//      break;
-//    case 2:
-//      pitches = {66, 70, 60, 61, 68, 65, 63, 67, 71, 69, 62, 64}; 
-//      break;
-//    case 3:
-//      pitches = {65, 69, 71, 60, 67, 64, 62, 66, 70, 68, 61, 63};
-//      break;
-//    case 4:
-//      pitches = {70, 62, 64, 65, 60, 69, 67, 71, 63, 61, 66, 68};
-//      break;
-//    }
-//  return pitches;
-//}
+
+void fishy() {
+  boolean start_over;
+  
+  tone[0] = 0;
+  for (int i = 1; i < 12; i++) {
+    start_over = true;
+    
+    while (start_over) {
+      start_over = false;
+      int temp = (int)random(1, 12);
+      println(temp);
+      
+      for (int j = 1; j < i; j++) {
+        
+        if (tone[j] == temp) {
+          println(i, j);
+          start_over = true;
+          break;
+          
+        }
+       
+      }
+      tone[i] = temp;
+    }
+    println(tone);
+  }
+}
