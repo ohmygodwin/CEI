@@ -34,7 +34,7 @@ void draw() {
       frameRate(random(.25, slow));
       
       if (beat == 0) {
-        set = floor(random(0, 11.9));
+        set = (int)random(0, 12);
       }
       
       float dynamics = random(30, 100);
